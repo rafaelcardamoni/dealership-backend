@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "ts-node-dev --respawn --exit-child --transpileOnly src/server.ts",
+    "dev": "ts-node-dev --exit-child src/server.ts",
     "build": "yarn tsc",
-    "start": "ts-node ./dist/server.js",
+    "start": "tsc && node ./dist/server.js",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
