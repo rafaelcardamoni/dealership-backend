@@ -4,8 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "ts-node-dev --exit-child src/server.ts",
-    "build": "next build",
-    "start": "next start",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
