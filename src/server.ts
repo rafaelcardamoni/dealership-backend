@@ -9,14 +9,14 @@ import { router } from './routes';
 
 const app = express();
 
-app.use(
-  cors({
-    origin: 'https://dealership-frontend.vercel.app/'
-  })
-);
+const corsOptions = {
+  origin: 'https://dealership-frontend.vercel.app/',
+  methods: 'POST'
+};
+
 app.use(express.json());
 app.use(router);
-app.use('/api', router);
+app.use('/api', cors(corsOptions), router);
 
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
