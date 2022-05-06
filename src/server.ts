@@ -1,15 +1,13 @@
 import 'reflect-metadata';
 require('dotenv').config();
 import express, { Request, Response, NextFunction } from 'express';
-import cors from 'cors';
+
 // imports database connection from index.ts
 import './database/';
 import 'express-async-errors';
 import { router } from './routes';
 
 const app = express();
-
-app.use(cors({ origin: 'https://dealership-frontend.vercel.app' }));
 
 app.use(express.json());
 app.use(router);

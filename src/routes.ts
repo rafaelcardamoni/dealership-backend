@@ -15,8 +15,21 @@ import { AuthenticateUserController } from './controllers/authentication/Authent
 import { authenticated } from './middlewares/authenticated';
 import { ListLimitedCarsController } from './controllers/cars/ListLimitedCarsController';
 import { GetCarByIdController } from './controllers/cars/GetCarByIdController';
-
+import cors from 'cors';
 const router = Router();
+
+const allowGetRequests = {
+  origin: '*',
+  methods: 'GET'
+};
+
+const allowRequests = {
+  origin: [
+    'https://dealership-frontend.vercel.app',
+    'https://dealership-frontend-git-testing-rafaelcardamoni.vercel.app'
+  ],
+  methods: 'GET, POST, PUT, DELETE'
+};
 
 // middlewares
 const multerConfig = require('./config/multer');
@@ -40,29 +53,54 @@ const getCarByIdController = new GetCarByIdController();
 const authenticateUserController = new AuthenticateUserController();
 
 // get requests
-router.get('/car/:id', getCarByIdController.handle);
-router.get('/cars', listCarsController.handle);
-router.get('/cars/:numOfCars', listLimitedCarsController.handle);
-router.get('/users', listUsersController.handle);
-router.get('/cars/images/:id', listImagesByCarController.handle);
+router.get('/car/:id', cors(allowGetRequests), getCarByIdController.handle);
+router.get('/cars', cors(allowGetRequests), listCarsController.handle);
+router.get(
+  '/cars/:numOfCars',
+  cors(allowGetRequests),
+  listLimitedCarsController.handle
+);
+router.get('/users', cors(allowGetRequests), listUsersController.handle);
+router.get(
+  '/cars/images/:id',
+  cors(allowGetRequests),
+  listImagesByCarController.handle
+);
 
 // post requests
-router.post('/cars/create', createCarController.handle);
-router.post('/users/create', createUserController.handle);
+router.post('/cars/create', cors(allowRequests), createCarController.handle);
+router.post('/users/create', cors(allowRequests), createUserController.handle);
 router.post(
   '/cars/images/create/:car_id',
   multer(multerConfig).single('file'),
+  cors(allowRequests),
   createImageController.handle
 );
-router.post('/login', authenticateUserController.handle);
+router.post('/login', cors(allowRequests), authenticateUserController.handle);
 
 // delete requests
-router.delete('/cars/delete/:id', deleteCarController.handle);
-router.delete('/cars/images/delete/:id', deleteImageController.handle);
-router.delete('/users/delete/:id', deleteUserController.handle);
+router.delete(
+  '/cars/delete/:id',
+  cors(allowRequests),
+  deleteCarController.handle
+);
+router.delete(
+  '/cars/images/delete/:id',
+  cors(allowRequests),
+  deleteImageController.handle
+);
+router.delete(
+  '/users/delete/:id',
+  cors(allowRequests),
+  deleteUserController.handle
+);
 
 // put requests
-router.put('/cars/update/:id', updateCarController.handle);
-router.put('/users/update/:id', updateUserController.handle);
+router.put('/cars/update/:id', cors(allowRequests), updateCarController.handle);
+router.put(
+  '/users/update/:id',
+  cors(allowRequests),
+  updateUserController.handle
+);
 
 export { router };
