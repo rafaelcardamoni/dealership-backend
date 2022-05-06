@@ -9,12 +9,12 @@ import { router } from './routes';
 
 const app = express();
 
-app.use(express.json());
 app.use(
   cors({
     origin: 'https://dealership-frontend.vercel.app/'
   })
 );
+app.use(express.json());
 app.use(router);
 app.use('/api', router);
 
