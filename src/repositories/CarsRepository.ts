@@ -10,7 +10,7 @@ class CarsRepository extends Repository<Cars> {
     const cars = await carsRepository.find({
       relations: ['images'],
       order: {
-        created_at: 'DESC'
+        created_at: 'ASC'
       },
       skip: 0,
       take: Number(numOfCars)
@@ -24,7 +24,8 @@ class CarsRepository extends Repository<Cars> {
 
     const car = await carsRepository.find({
       where: { id },
-      relations: ['images']
+      relations: ['images'],
+      order: { created_at: 'ASC' }
     });
 
     return car;
