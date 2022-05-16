@@ -23,30 +23,30 @@ const allowGetRequests = {
   methods: 'GET'
 };
 
-const whitelist = [
-  'https://dealership-frontend.vercel.app',
-  'https://dealership-frontend-git-testing-rafaelcardamoni.vercel.app'
-];
-
-const allowRequests = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: 'GET, POST, PUT, DELETE'
-};
+// const whitelist = [
+//   'https://dealership-frontend.vercel.app',
+//   'https://dealership-frontend-git-testing-rafaelcardamoni.vercel.app'
+// ];
 
 // const allowRequests = {
-//   origin: [
-//     'https://dealership-frontend.vercel.app',
-//     'https://dealership-frontend-git-testing-rafaelcardamoni.vercel.app',
-//     'https://dealership-frontend-git-testing-rafaelcardamoni.vercel.app/login'
-//   ],
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
 //   methods: 'GET, POST, PUT, DELETE'
 // };
+
+const allowRequests = {
+  origin: [
+    'https://dealership-frontend.vercel.app',
+    'https://dealership-frontend-git-testing-rafaelcardamoni.vercel.app',
+    'https://dealership-frontend-git-testing-rafaelcardamoni.vercel.app/login'
+  ],
+  methods: 'GET, POST, PUT, DELETE'
+};
 
 // middlewares
 const multerConfig = require('./config/multer');
