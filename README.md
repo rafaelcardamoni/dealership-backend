@@ -5,7 +5,7 @@ Available routes:
   
 Get Requests  
 https://dealership-next.herokuapp.com/api/cars List of all cars  
-https://dealership-next.herokuapp.com/api/cars/id Car by ID  
+https://dealership-next.herokuapp.com/api/cars/id Display car by ID  
 https://dealership-next.herokuapp.com/api/cars/number(1-99) List limited amount of cars  
 https://dealership-next.herokuapp.com/api/users List of all users  
 https://dealership-next.herokuapp.com/api/cars/images/id List images by car ID  
