@@ -1,15 +1,19 @@
 import 'reflect-metadata';
 require('dotenv').config();
 import express, { Request, Response, NextFunction } from 'express';
-
 // imports database connection from index.ts
 import './database/';
 import 'express-async-errors';
 import { router } from './routes';
+import cors from 'cors';
 
 const app = express();
-
 app.use(express.json());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  app.use(cors());
+  next();
+});
 app.use(router);
 app.use('/api', router);
 
