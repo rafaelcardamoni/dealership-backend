@@ -24,12 +24,10 @@ const allowGetRequests = {
 };
 
 const allowRequests = {
-  origin: '*',
-  // origin: [
-  //   'https://dealership-frontend.vercel.app',
-  //   'https://dealership-frontend-git-testing-rafaelcardamoni.vercel.app',
-  //   'http:localhost:3000'
-  // ],
+  origin: [
+    'https://dealership-frontend.vercel.app',
+    'https://dealership-frontend-git-testing-rafaelcardamoni.vercel.app'
+  ],
   methods: 'GET, POST, PUT, DELETE'
 };
 
