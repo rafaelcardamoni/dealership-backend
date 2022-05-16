@@ -26,7 +26,8 @@ const allowGetRequests = {
 const allowRequests = {
   origin: [
     'https://dealership-frontend.vercel.app',
-    'https://dealership-frontend-git-testing-rafaelcardamoni.vercel.app'
+    'https://dealership-frontend-git-testing-rafaelcardamoni.vercel.app',
+    'https://dealership-frontend-git-testing-rafaelcardamoni.vercel.app/login'
   ],
   methods: 'GET, POST, PUT, DELETE'
 };
