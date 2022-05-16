@@ -18,19 +18,6 @@ import { GetCarByIdController } from './controllers/cars/GetCarByIdController';
 // import cors from 'cors';
 const router = Router();
 
-// const allowGetRequests = {
-//   origin: '*',
-//   methods: 'GET'
-// };
-
-// const allowRequests = {
-//   origin: [
-//     'https://dealership-frontend.vercel.app',
-//     'https://dealership-frontend-git-testing-rafaelcardamoni.vercel.app'
-//   ],
-//   methods: 'GET, POST, PUT, DELETE'
-// };
-
 // middlewares
 const multerConfig = require('./config/multer');
 

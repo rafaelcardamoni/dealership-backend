@@ -10,12 +10,22 @@ import cors from 'cors';
 const app = express();
 app.use(express.json());
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  const allowedOrigins = [
+    'https://dealership-frontend.vercel.app',
+    'https://dealership-frontend-git-testing-rafaelcardamoni.vercel.app',
+    'http://localhost:3000'
+  ];
+
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
   app.use(cors());
   next();
 });
 app.use(router);
 app.use('/api', router);
+router.options('*', cors());
 
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {

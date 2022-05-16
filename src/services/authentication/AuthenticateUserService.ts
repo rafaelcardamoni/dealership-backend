@@ -15,7 +15,7 @@ class AuthenticateUserService {
     // check if e-mail exists
     const user = await usersRepository.findOne({
       where: { email },
-      select: ['email', 'password']
+      select: ['fullname', 'email', 'password']
     });
 
     if (!user) {
@@ -39,7 +39,13 @@ class AuthenticateUserService {
       }
     );
 
-    return token;
+    const userInfo = {
+      name: user.fullname,
+      email: user.email,
+      token: token
+    };
+
+    return userInfo;
   }
 }
 
